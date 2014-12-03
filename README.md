@@ -2,7 +2,7 @@ Brue-OkHttp
 ===========
 
 The Brue project provides a Java framework to manage and control devices
-connected to a [Philips Hue](http://www.meeuhue.com "Philips Hue") bridge.
+connected to a [Philips Hue](http://www.meethue.com "Philips Hue") bridge.
 
 The Brue-OkHttp project uses the [OkHttp](http://square.github.io/okhttp "OkHttp")
 library from Square as the bridge web-service client implementation.
