@@ -1,34 +1,33 @@
 package test;
 
+import static uk.co.caprica.brue.domain.bridge.builder.GroupBuilder.group;
+import static uk.co.caprica.brue.domain.bridge.builder.GroupStateBuilder.groupState;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.caprica.brue.service.settings.BridgeSettings;
-import uk.co.caprica.brue.domain.builder.GroupBuilder;
-import uk.co.caprica.brue.domain.builder.StateBuilder;
-import uk.co.caprica.brue.domain.result.CreateResult;
-import uk.co.caprica.brue.service.BridgeErrorResultException;
-import uk.co.caprica.brue.service.BridgeService;
-import uk.co.caprica.brue.service.okhttp.BridgeServiceImpl;
-
-import static uk.co.caprica.brue.domain.builder.GroupBuilder.group;
-import static uk.co.caprica.brue.domain.builder.StateBuilder.state;
-
-// FIXME remember throttling although that maybe belongs outside of this project...
-
-// I am not sure how to do async - probably i should use the okhttp callbacks, or should i use Loader and okhttp sync?
-// i don't really want to support both
-// ideally this api would usable from a webapp too... so any design has to take that into account
-
-// FIXME think about supporting the get full config for synchronisation method
+import uk.co.caprica.brue.domain.bridge.builder.GroupBuilder;
+import uk.co.caprica.brue.domain.bridge.builder.GroupStateBuilder;
+import uk.co.caprica.brue.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.okhttp.service.bridge.BridgeServiceImpl;
+import uk.co.caprica.brue.okhttp.service.discovery.DiscoveryServiceImpl;
+import uk.co.caprica.brue.service.bridge.BridgeErrorResultException;
+import uk.co.caprica.brue.service.bridge.BridgeService;
+import uk.co.caprica.brue.service.discovery.DiscoveryService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 /**
  * Created by mark on 29/11/14.
  */
 public class TempTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
+            DiscoveryService discoveryService = new DiscoveryServiceImpl();
+
+//            ServiceDescription sd = discoveryService.serviceDescription();
+//            System.out.println("sd=" + sd);
+
             BridgeService bridgeService = new BridgeServiceImpl(new TestBridgeSettings());
 
 //            Authorisation a = new Authorisation("testuser", "bill456789");
@@ -47,9 +46,15 @@ public class TempTest {
 //            }
 
 
-            System.out.println("Config=" + bridgeService.config().config());
+//            System.out.println("Config=" + bridgeService.config().config());
 
-//            if(true) return;
+//            System.out.println("Light1=" + bridgeService.light().light(1));
+//            bridgeService.light().attributes(1, AttributesBuilder.attributes().name("Bedroom1"));
+//            System.out.println("Light1=" + bridgeService.light().light(1));
+
+            System.out.println(bridgeService.scene().scenes());
+
+            if(true) return;
 
             System.out.println("Lights=" + bridgeService.light().lights());
 
@@ -65,7 +70,7 @@ public class TempTest {
             CreateResult cr = bridgeService.group().create(gs);
             System.out.println("Create=" + cr + " -> " + cr.id());
 
-            StateBuilder state = state().on(true);
+            GroupStateBuilder state = groupState().on(true);
             System.out.println("state=" + state);
 
 //            System.out.println(bridgeService.group().state(1, state));
@@ -110,7 +115,7 @@ public class TempTest {
 
         @Override
         public String host() {
-            return "192.168.1.122";
+            return "philips-hue";
         }
 
         @Override
