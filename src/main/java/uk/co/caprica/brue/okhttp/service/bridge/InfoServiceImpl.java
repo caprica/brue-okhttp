@@ -18,12 +18,12 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.List;
 
-import uk.co.caprica.brue.service.InfoService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.service.bridge.InfoService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 

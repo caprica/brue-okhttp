@@ -18,18 +18,18 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.Group;
-import uk.co.caprica.brue.domain.builder.GroupBuilder;
-import uk.co.caprica.brue.domain.builder.StateBuilder;
-import uk.co.caprica.brue.domain.result.CreateResult;
-import uk.co.caprica.brue.domain.result.DeleteResult;
-import uk.co.caprica.brue.domain.result.UpdateResult;
-import uk.co.caprica.brue.service.GroupService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.Group;
+import uk.co.caprica.brue.domain.bridge.builder.GroupBuilder;
+import uk.co.caprica.brue.domain.bridge.builder.GroupStateBuilder;
+import uk.co.caprica.brue.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.domain.bridge.result.DeleteResult;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.GroupService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -84,7 +84,7 @@ public final class GroupServiceImpl extends AbstractBridgeService implements Gro
     }
 
     @Override
-    public UpdateResult state(Integer groupId, StateBuilder state) {
+    public UpdateResult state(Integer groupId, GroupStateBuilder state) {
         return updateResource(resourceUrl(groupId, ACTION_PATH), state);
     }
 }

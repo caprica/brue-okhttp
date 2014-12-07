@@ -18,13 +18,16 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.Rule;
-import uk.co.caprica.brue.service.RuleService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.Rule;
+import uk.co.caprica.brue.domain.bridge.builder.RuleBuilder;
+import uk.co.caprica.brue.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.RuleService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -59,7 +62,17 @@ public final class RuleServiceImpl extends AbstractBridgeService implements Rule
     }
 
     @Override
+    public CreateResult create(RuleBuilder rule) {
+        return createResource(resourceUrl(), rule);
+    }
+
+    @Override
     public void delete(Integer ruleId) {
         deleteResource(resourceUrl(ruleId));
+    }
+
+    @Override
+    public UpdateResult update(Integer ruleId, RuleBuilder rule) {
+        return updateResource(resourceUrl(), rule);
     }
 }

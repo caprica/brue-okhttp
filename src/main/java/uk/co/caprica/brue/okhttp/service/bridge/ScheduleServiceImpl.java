@@ -18,13 +18,16 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.Schedule;
-import uk.co.caprica.brue.service.ScheduleService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.Schedule;
+import uk.co.caprica.brue.domain.bridge.builder.ScheduleBuilder;
+import uk.co.caprica.brue.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.ScheduleService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -58,18 +61,18 @@ public final class ScheduleServiceImpl extends AbstractBridgeService implements 
         return getResource(resourceUrl(scheduleId), Schedule.class);
     }
 
-//    @Override
-//    public SuccessResponse create(GroupSpec groupSpec) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void update(GroupSpec groupSpec) {
-//
-//    }
+    @Override
+    public CreateResult create(ScheduleBuilder schedule) {
+        return createResource(resourceUrl(), schedule);
+    }
 
     @Override
     public void delete(Integer scheduleId) {
         deleteResource(resourceUrl(scheduleId));
+    }
+
+    @Override
+    public UpdateResult attributes(Integer scheduleId, ScheduleBuilder schedule) {
+        return updateResource(resourceUrl(scheduleId), schedule);
     }
 }

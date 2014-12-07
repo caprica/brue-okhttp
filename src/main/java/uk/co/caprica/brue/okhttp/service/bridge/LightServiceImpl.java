@@ -18,15 +18,16 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.Light;
-import uk.co.caprica.brue.domain.builder.StateBuilder;
-import uk.co.caprica.brue.domain.result.UpdateResult;
-import uk.co.caprica.brue.service.LightService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.Light;
+import uk.co.caprica.brue.domain.bridge.builder.AttributesBuilder;
+import uk.co.caprica.brue.domain.bridge.builder.LightStateBuilder;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.LightService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
@@ -66,7 +67,12 @@ public final class LightServiceImpl extends AbstractBridgeService implements Lig
     }
 
     @Override
-    public UpdateResult state(Integer lightId, StateBuilder state) {
+    public UpdateResult attributes(Integer lightId, AttributesBuilder attributes) {
+        return updateResource(resourceUrl(lightId), attributes);
+    }
+
+    @Override
+    public UpdateResult state(Integer lightId, LightStateBuilder state) {
         return updateResource(resourceUrl(lightId, STATE_PATH), state);
     }
 }

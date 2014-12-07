@@ -18,43 +18,43 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.Scene;
-import uk.co.caprica.brue.service.SceneService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.Sensor;
+import uk.co.caprica.brue.service.bridge.SensorService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
-public final class SceneServiceImpl extends AbstractBridgeService implements SceneService {
+public final class SensorServiceImpl extends AbstractBridgeService implements SensorService {
 
     /**
      *
      */
-    private static final String RESOURCE_PATH = "scenes";
+    private static final String RESOURCE_PATH = "sensors";
 
     /**
      *
      */
-    private static final TypeReference<Map<String,Scene>> sceneMapTypeReference = new TypeReference<Map<String,Scene>>(){};
+    private static final TypeReference<Map<Integer,Sensor>> sensorMapTypeReference = new TypeReference<Map<Integer,Sensor>>(){};
 
     /**
      *
      * @param bridgeSettings
      */
-    protected SceneServiceImpl(BridgeSettings bridgeSettings) {
+    protected SensorServiceImpl(BridgeSettings bridgeSettings) {
         super(bridgeSettings, RESOURCE_PATH);
     }
 
     @Override
-    public Map<String, Scene> scenes() {
-        return getResource(resourceUrl(), sceneMapTypeReference);
+    public Map<Integer, Sensor> sensors() {
+        return getResource(resourceUrl(), sensorMapTypeReference);
     }
 
     @Override
-    public Scene scene(Integer sceneId) {
-        return getResource(resourceUrl(sceneId), Scene.class);
+    public Sensor sensor(Integer sensorId) {
+        return getResource(resourceUrl(sensorId), Sensor.class);
     }
 }

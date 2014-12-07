@@ -18,28 +18,31 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service;
 
-import uk.co.caprica.brue.domain.authorisation.Authorisation;
-import uk.co.caprica.brue.domain.result.AuthoriseResult;
-import uk.co.caprica.brue.service.AuthorisationService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import com.squareup.okhttp.OkHttpClient;
 
-/**
- *
- */
-public final class AuthorisationServiceImpl extends AbstractBridgeService implements AuthorisationService {
+public abstract class AbstractOkHttpService {
+
+    /**
+     * Shared HTTP Client.
+     * <p>
+     * Once created, this client is completely thread-safe and can safely be re-used.
+     */
+    protected static final OkHttpClient httpClient = new OkHttpClient();
+
+    /**
+     * Standard HTTP Accept header name.
+     */
+    protected static final String HEADER_ACCEPT = "Accept";
+
+    /**
+     * Standard media type for JSON requests and responses.
+     */
+    protected static final String MEDIA_TYPE_JSON = "application/json";
 
     /**
      *
-     * @param bridgeSettings
      */
-    protected AuthorisationServiceImpl(BridgeSettings bridgeSettings) {
-        super(bridgeSettings);
-    }
-
-    @Override
-    public AuthoriseResult authorise(Authorisation authorisation) {
-        return authoriseResource(authorisation);
-    }
+    protected static final String MEDIA_TYPE_XML = "text/xml";
 }

@@ -18,19 +18,19 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
-import uk.co.caprica.brue.service.AuthorisationService;
-import uk.co.caprica.brue.service.BridgeService;
-import uk.co.caprica.brue.service.ConfigService;
-import uk.co.caprica.brue.service.GroupService;
-import uk.co.caprica.brue.service.InfoService;
-import uk.co.caprica.brue.service.LightService;
-import uk.co.caprica.brue.service.RuleService;
-import uk.co.caprica.brue.service.SceneService;
-import uk.co.caprica.brue.service.ScheduleService;
-import uk.co.caprica.brue.service.SensorService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.service.bridge.AuthorisationService;
+import uk.co.caprica.brue.service.bridge.BridgeService;
+import uk.co.caprica.brue.service.bridge.ConfigService;
+import uk.co.caprica.brue.service.bridge.GroupService;
+import uk.co.caprica.brue.service.bridge.InfoService;
+import uk.co.caprica.brue.service.bridge.LightService;
+import uk.co.caprica.brue.service.bridge.RuleService;
+import uk.co.caprica.brue.service.bridge.SceneService;
+import uk.co.caprica.brue.service.bridge.ScheduleService;
+import uk.co.caprica.brue.service.bridge.SensorService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 public class BridgeServiceImpl implements BridgeService {
 

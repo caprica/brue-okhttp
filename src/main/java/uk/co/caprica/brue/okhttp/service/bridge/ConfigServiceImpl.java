@@ -18,14 +18,14 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
-import uk.co.caprica.brue.domain.builder.ConfigBuilder;
-import uk.co.caprica.brue.domain.config.Config;
-import uk.co.caprica.brue.domain.result.DeleteResult;
-import uk.co.caprica.brue.domain.result.UpdateResult;
-import uk.co.caprica.brue.service.ConfigService;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.builder.ConfigBuilder;
+import uk.co.caprica.brue.domain.bridge.config.Config;
+import uk.co.caprica.brue.domain.bridge.result.DeleteResult;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.ConfigService;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 public final class ConfigServiceImpl extends AbstractBridgeService implements ConfigService {
 

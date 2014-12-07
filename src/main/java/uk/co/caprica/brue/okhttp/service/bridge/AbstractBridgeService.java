@@ -18,26 +18,26 @@
  * along with Brue.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package uk.co.caprica.brue.service.okhttp;
+package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.io.IOException;
 import java.util.List;
 
-import uk.co.caprica.brue.domain.authorisation.Authorisation;
-import uk.co.caprica.brue.domain.result.AuthoriseDetail;
-import uk.co.caprica.brue.domain.result.AuthoriseResult;
-import uk.co.caprica.brue.domain.result.CreateDetail;
-import uk.co.caprica.brue.domain.result.CreateResult;
-import uk.co.caprica.brue.domain.result.DeleteDetail;
-import uk.co.caprica.brue.domain.result.DeleteResult;
-import uk.co.caprica.brue.domain.result.ErrorDetail;
-import uk.co.caprica.brue.domain.result.ErrorResult;
-import uk.co.caprica.brue.domain.result.UpdateDetail;
-import uk.co.caprica.brue.domain.result.UpdateResult;
-import uk.co.caprica.brue.service.BridgeErrorResultException;
-import uk.co.caprica.brue.service.BridgeIOException;
-import uk.co.caprica.brue.service.BridgeResponseException;
-import uk.co.caprica.brue.service.settings.BridgeSettings;
+import uk.co.caprica.brue.domain.bridge.authorisation.Authorisation;
+import uk.co.caprica.brue.domain.bridge.result.AuthoriseDetail;
+import uk.co.caprica.brue.domain.bridge.result.AuthoriseResult;
+import uk.co.caprica.brue.domain.bridge.result.CreateDetail;
+import uk.co.caprica.brue.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.domain.bridge.result.DeleteDetail;
+import uk.co.caprica.brue.domain.bridge.result.DeleteResult;
+import uk.co.caprica.brue.domain.bridge.result.ErrorDetail;
+import uk.co.caprica.brue.domain.bridge.result.ErrorResult;
+import uk.co.caprica.brue.domain.bridge.result.UpdateDetail;
+import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.service.bridge.BridgeErrorResultException;
+import uk.co.caprica.brue.service.bridge.BridgeIOException;
+import uk.co.caprica.brue.service.bridge.BridgeResponseException;
+import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
@@ -49,6 +49,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
+
+// FIXME push httpClient to a common static base class, e.g. to share with DiscoveryService
 
 /**
  * Base implementation for a Philips Hue Bridge service that uses HTTP to communicate with the bridge.
