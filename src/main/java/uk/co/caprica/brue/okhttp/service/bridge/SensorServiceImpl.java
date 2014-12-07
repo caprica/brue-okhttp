@@ -27,6 +27,7 @@ import uk.co.caprica.brue.service.bridge.SensorService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class SensorServiceImpl extends AbstractBridgeService implements SensorService {
 
@@ -50,7 +51,7 @@ public final class SensorServiceImpl extends AbstractBridgeService implements Se
 
     @Override
     public Map<Integer, Sensor> sensors() {
-        return getResource(resourceUrl(), sensorMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), sensorMapTypeReference));
     }
 
     @Override

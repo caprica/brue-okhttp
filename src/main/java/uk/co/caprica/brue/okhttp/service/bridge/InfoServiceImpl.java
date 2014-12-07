@@ -26,6 +26,7 @@ import uk.co.caprica.brue.service.bridge.InfoService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableList;
 
 public final class InfoServiceImpl extends AbstractBridgeService implements InfoService {
 
@@ -49,6 +50,6 @@ public final class InfoServiceImpl extends AbstractBridgeService implements Info
 
     @Override
     public List<String> timezones() {
-        return getResource(resourceUrl("timezones"), timezoneListTypeReference);
+        return ImmutableList.copyOf(getResource(resourceUrl("timezones"), timezoneListTypeReference));
     }
 }

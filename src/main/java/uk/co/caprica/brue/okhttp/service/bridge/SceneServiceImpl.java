@@ -27,6 +27,7 @@ import uk.co.caprica.brue.service.bridge.SceneService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class SceneServiceImpl extends AbstractBridgeService implements SceneService {
 
@@ -50,6 +51,6 @@ public final class SceneServiceImpl extends AbstractBridgeService implements Sce
 
     @Override
     public Map<String, Scene> scenes() {
-        return getResource(resourceUrl(), sceneMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), sceneMapTypeReference));
     }
 }

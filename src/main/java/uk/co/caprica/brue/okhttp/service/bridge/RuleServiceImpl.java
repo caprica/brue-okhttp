@@ -30,6 +30,7 @@ import uk.co.caprica.brue.service.bridge.RuleService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class RuleServiceImpl extends AbstractBridgeService implements RuleService {
 
@@ -53,7 +54,7 @@ public final class RuleServiceImpl extends AbstractBridgeService implements Rule
 
     @Override
     public Map<Integer, Rule> rules() {
-        return getResource(resourceUrl(), ruleMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), ruleMapTypeReference));
     }
 
     @Override

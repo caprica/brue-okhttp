@@ -32,6 +32,7 @@ import uk.co.caprica.brue.service.bridge.GroupService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class GroupServiceImpl extends AbstractBridgeService implements GroupService {
 
@@ -60,7 +61,7 @@ public final class GroupServiceImpl extends AbstractBridgeService implements Gro
 
     @Override
     public Map<Integer, Group> groups() {
-        return getResource(resourceUrl(), groupMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), groupMapTypeReference));
     }
 
     @Override

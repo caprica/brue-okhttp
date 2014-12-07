@@ -30,6 +30,7 @@ import uk.co.caprica.brue.service.bridge.ScheduleService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class ScheduleServiceImpl extends AbstractBridgeService implements ScheduleService {
 
@@ -53,7 +54,7 @@ public final class ScheduleServiceImpl extends AbstractBridgeService implements 
 
     @Override
     public Map<Long, Schedule> schedules() {
-        return getResource(resourceUrl(), scheduleMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), scheduleMapTypeReference));
     }
 
     @Override

@@ -30,6 +30,7 @@ import uk.co.caprica.brue.service.bridge.LightService;
 import uk.co.caprica.brue.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
 
 public final class LightServiceImpl extends AbstractBridgeService implements LightService {
 
@@ -58,7 +59,7 @@ public final class LightServiceImpl extends AbstractBridgeService implements Lig
 
     @Override
     public Map<Integer,Light> lights() {
-        return getResource(resourceUrl(), lightMapTypeReference);
+        return ImmutableMap.copyOf(getResource(resourceUrl(), lightMapTypeReference));
     }
 
     @Override
