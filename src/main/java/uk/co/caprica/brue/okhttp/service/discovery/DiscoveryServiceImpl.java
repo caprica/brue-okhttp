@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import org.simpleframework.xml.core.Persister;
 
-import uk.co.caprica.brue.domain.discovery.ServiceDescription;
+import uk.co.caprica.brue.core.domain.discovery.ServiceDescription;
+import uk.co.caprica.brue.core.service.discovery.DiscoveryException;
+import uk.co.caprica.brue.core.service.discovery.DiscoveryIOException;
+import uk.co.caprica.brue.core.service.discovery.DiscoveryService;
 import uk.co.caprica.brue.okhttp.service.AbstractOkHttpService;
-import uk.co.caprica.brue.service.discovery.DiscoveryException;
-import uk.co.caprica.brue.service.discovery.DiscoveryIOException;
-import uk.co.caprica.brue.service.discovery.DiscoveryService;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;

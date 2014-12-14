@@ -22,8 +22,8 @@ package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.List;
 
-import uk.co.caprica.brue.service.bridge.InfoService;
-import uk.co.caprica.brue.settings.bridge.BridgeSettings;
+import uk.co.caprica.brue.core.service.bridge.InfoService;
+import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableList;

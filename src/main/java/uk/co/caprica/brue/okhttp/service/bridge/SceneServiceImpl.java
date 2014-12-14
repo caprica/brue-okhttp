@@ -22,9 +22,9 @@ package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.bridge.Scene;
-import uk.co.caprica.brue.service.bridge.SceneService;
-import uk.co.caprica.brue.settings.bridge.BridgeSettings;
+import uk.co.caprica.brue.core.domain.bridge.Scene;
+import uk.co.caprica.brue.core.service.bridge.SceneService;
+import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableMap;

@@ -20,10 +20,10 @@
 
 package uk.co.caprica.brue.okhttp.service.bridge;
 
-import uk.co.caprica.brue.domain.bridge.authorisation.Authorisation;
-import uk.co.caprica.brue.domain.bridge.result.AuthoriseResult;
-import uk.co.caprica.brue.service.bridge.AuthorisationService;
-import uk.co.caprica.brue.settings.bridge.BridgeSettings;
+import uk.co.caprica.brue.core.domain.bridge.authorisation.Authorisation;
+import uk.co.caprica.brue.core.domain.bridge.result.AuthoriseResult;
+import uk.co.caprica.brue.core.service.bridge.AuthorisationService;
+import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
 /**
  *

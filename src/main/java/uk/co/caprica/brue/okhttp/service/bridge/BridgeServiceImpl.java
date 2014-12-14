@@ -20,17 +20,17 @@
 
 package uk.co.caprica.brue.okhttp.service.bridge;
 
-import uk.co.caprica.brue.service.bridge.AuthorisationService;
-import uk.co.caprica.brue.service.bridge.BridgeService;
-import uk.co.caprica.brue.service.bridge.ConfigService;
-import uk.co.caprica.brue.service.bridge.GroupService;
-import uk.co.caprica.brue.service.bridge.InfoService;
-import uk.co.caprica.brue.service.bridge.LightService;
-import uk.co.caprica.brue.service.bridge.RuleService;
-import uk.co.caprica.brue.service.bridge.SceneService;
-import uk.co.caprica.brue.service.bridge.ScheduleService;
-import uk.co.caprica.brue.service.bridge.SensorService;
-import uk.co.caprica.brue.settings.bridge.BridgeSettings;
+import uk.co.caprica.brue.core.service.bridge.AuthorisationService;
+import uk.co.caprica.brue.core.service.bridge.BridgeService;
+import uk.co.caprica.brue.core.service.bridge.ConfigService;
+import uk.co.caprica.brue.core.service.bridge.GroupService;
+import uk.co.caprica.brue.core.service.bridge.InfoService;
+import uk.co.caprica.brue.core.service.bridge.LightService;
+import uk.co.caprica.brue.core.service.bridge.RuleService;
+import uk.co.caprica.brue.core.service.bridge.SceneService;
+import uk.co.caprica.brue.core.service.bridge.ScheduleService;
+import uk.co.caprica.brue.core.service.bridge.SensorService;
+import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
 public class BridgeServiceImpl implements BridgeService {
 

@@ -22,12 +22,12 @@ package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.util.Map;
 
-import uk.co.caprica.brue.domain.bridge.Schedule;
-import uk.co.caprica.brue.domain.bridge.builder.ScheduleBuilder;
-import uk.co.caprica.brue.domain.bridge.result.CreateResult;
-import uk.co.caprica.brue.domain.bridge.result.UpdateResult;
-import uk.co.caprica.brue.service.bridge.ScheduleService;
-import uk.co.caprica.brue.settings.bridge.BridgeSettings;
+import uk.co.caprica.brue.core.domain.bridge.Schedule;
+import uk.co.caprica.brue.core.domain.bridge.builder.ScheduleBuilder;
+import uk.co.caprica.brue.core.domain.bridge.result.CreateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.service.bridge.ScheduleService;
+import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableMap;
