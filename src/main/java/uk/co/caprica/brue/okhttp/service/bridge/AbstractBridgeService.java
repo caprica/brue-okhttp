@@ -21,19 +21,10 @@
 package uk.co.caprica.brue.okhttp.service.bridge;
 
 import java.io.IOException;
-import java.util.List;
 
 import uk.co.caprica.brue.core.domain.bridge.authorisation.Authorisation;
-import uk.co.caprica.brue.core.domain.bridge.result.AuthoriseDetail;
-import uk.co.caprica.brue.core.domain.bridge.result.AuthoriseResult;
-import uk.co.caprica.brue.core.domain.bridge.result.CreateDetail;
-import uk.co.caprica.brue.core.domain.bridge.result.CreateResult;
-import uk.co.caprica.brue.core.domain.bridge.result.DeleteDetail;
-import uk.co.caprica.brue.core.domain.bridge.result.DeleteResult;
-import uk.co.caprica.brue.core.domain.bridge.result.ErrorDetail;
-import uk.co.caprica.brue.core.domain.bridge.result.ErrorResult;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateDetail;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.ResultList;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.BridgeErrorResultException;
 import uk.co.caprica.brue.core.service.bridge.BridgeIOException;
 import uk.co.caprica.brue.core.service.bridge.BridgeResponseException;
@@ -72,7 +63,7 @@ abstract class AbstractBridgeService {
      * Once created and configured, this object mapper is completely thread-safe and can be safely re-used.
      */
     private static final ObjectMapper objectMapper = new ObjectMapper() {
-        {registerModule(new GuavaModule());}
+        {registerModule(new GuavaModule());}  // FIXME don't think i need this anymore
     };
 
     /**
@@ -126,10 +117,9 @@ abstract class AbstractBridgeService {
      * @param authorisation
      * @return
      */
-    protected final AuthoriseResult authoriseResource(Authorisation authorisation) {
+    protected final Results authoriseResource(Authorisation authorisation) {
         Request request = new Request.Builder().url(bridgeUrl()).post(requestBody(authorisation)).addHeader(HEADER_ACCEPT, MEDIA_TYPE_JSON).build();
-        List<AuthoriseDetail> result = executeRequest(request, typeOf(AuthoriseResult.TYPE_REFERENCE));
-        return new AuthoriseResult(result);
+        return executeRequest(request);
     }
 
     /**
@@ -163,10 +153,9 @@ abstract class AbstractBridgeService {
      * @param object
      * @return
      */
-    protected final CreateResult createResource(String resourceUrl, Object object) {
+    protected final Results createResource(String resourceUrl, Object object) {
         Request request = new Request.Builder().url(resourceUrl).post(requestBody(object)).addHeader(HEADER_ACCEPT, MEDIA_TYPE_JSON).build();
-        List<CreateDetail> result = executeRequest(request, typeOf(CreateResult.TYPE_REFERENCE));
-        return new CreateResult(result);
+        return executeRequest(request);
     }
 
     /**
@@ -176,10 +165,9 @@ abstract class AbstractBridgeService {
      * @param object
      * @return
      */
-    protected final UpdateResult updateResource(String resourceUrl, Object object) {
+    protected final Results updateResource(String resourceUrl, Object object) {
         Request request = new Request.Builder().url(resourceUrl).put(requestBody(object)).addHeader(HEADER_ACCEPT, MEDIA_TYPE_JSON).build();
-        List<UpdateDetail> result = executeRequest(request, typeOf(UpdateResult.TYPE_REFERENCE));
-        return new UpdateResult(result);
+        return executeRequest(request);
     }
 
     /**
@@ -187,10 +175,9 @@ abstract class AbstractBridgeService {
      *
      * @param resourceUrl
      */
-    protected final DeleteResult deleteResource(String resourceUrl) {
+    protected final Results deleteResource(String resourceUrl) {
         Request request = new Request.Builder().url(resourceUrl).delete().build();
-        List<DeleteDetail> result = executeRequest(request, typeOf(DeleteResult.TYPE_REFERENCE));
-        return new DeleteResult(result);
+        return executeRequest(request);
     }
 
     /**
@@ -308,6 +295,17 @@ abstract class AbstractBridgeService {
     }
 
     /**
+     *
+     *
+     * @param request
+     * @return
+     */
+    private Results executeRequest(Request request) {
+        ResultList results = executeRequest(request, typeOf(ResultList.class));
+        return results.results();
+    }
+
+    /**
      * Extract a domain object from an HTTP response body.
      * <p>
      * Note that the response body must be explicitly closed (and in this case is done so by using the try-with-resources
@@ -340,13 +338,15 @@ abstract class AbstractBridgeService {
      */
     private <T> T mapResponse(String body, JavaType responseType) {
         try {
+            System.out.println("body=" + body);
+
             T result = objectMapper.reader().withType(responseType).readValue(body);
             return result;
         }
         catch (IOException e) {
             try {
-                List<ErrorDetail> result = objectMapper.reader().withType(ErrorResult.TYPE_REFERENCE).readValue(body);
-                throw new BridgeErrorResultException(new ErrorResult(result));
+                ResultList result = objectMapper.reader().withType(ResultList.class).readValue(body);
+                throw new BridgeErrorResultException(result.results());
             }
             catch (IOException f) {
                 // Failed to unmarshal the error response, so throw the *original* exception

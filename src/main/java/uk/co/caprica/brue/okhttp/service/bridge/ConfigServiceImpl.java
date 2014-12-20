@@ -22,8 +22,7 @@ package uk.co.caprica.brue.okhttp.service.bridge;
 
 import uk.co.caprica.brue.core.domain.bridge.builder.ConfigBuilder;
 import uk.co.caprica.brue.core.domain.bridge.config.Config;
-import uk.co.caprica.brue.core.domain.bridge.result.DeleteResult;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.ConfigService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -53,12 +52,12 @@ public final class ConfigServiceImpl extends AbstractBridgeService implements Co
     }
 
     @Override
-    public UpdateResult update(ConfigBuilder config) {
+    public Results update(ConfigBuilder config) {
         return updateResource(resourceUrl(), config);
     }
 
     @Override
-    public DeleteResult deleteUser(String username) {
+    public Results deleteUser(String username) {
         return deleteResource(resourceUrl(WHITELIST_PATH, username));
     }
 }

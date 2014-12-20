@@ -25,7 +25,7 @@ import java.util.Map;
 import uk.co.caprica.brue.core.domain.bridge.Light;
 import uk.co.caprica.brue.core.domain.bridge.builder.AttributesBuilder;
 import uk.co.caprica.brue.core.domain.bridge.builder.LightStateBuilder;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.LightService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -68,12 +68,12 @@ public final class LightServiceImpl extends AbstractBridgeService implements Lig
     }
 
     @Override
-    public UpdateResult attributes(Integer lightId, AttributesBuilder attributes) {
+    public Results attributes(Integer lightId, AttributesBuilder attributes) {
         return updateResource(resourceUrl(lightId), attributes);
     }
 
     @Override
-    public UpdateResult state(Integer lightId, LightStateBuilder state) {
+    public Results state(Integer lightId, LightStateBuilder state) {
         return updateResource(resourceUrl(lightId, STATE_PATH), state);
     }
 }

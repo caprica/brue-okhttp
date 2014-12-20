@@ -24,8 +24,7 @@ import java.util.Map;
 
 import uk.co.caprica.brue.core.domain.bridge.Rule;
 import uk.co.caprica.brue.core.domain.bridge.builder.RuleBuilder;
-import uk.co.caprica.brue.core.domain.bridge.result.CreateResult;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.RuleService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -63,7 +62,7 @@ public final class RuleServiceImpl extends AbstractBridgeService implements Rule
     }
 
     @Override
-    public CreateResult create(RuleBuilder rule) {
+    public Results create(RuleBuilder rule) {
         return createResource(resourceUrl(), rule);
     }
 
@@ -73,7 +72,7 @@ public final class RuleServiceImpl extends AbstractBridgeService implements Rule
     }
 
     @Override
-    public UpdateResult update(Integer ruleId, RuleBuilder rule) {
+    public Results update(Integer ruleId, RuleBuilder rule) {
         return updateResource(resourceUrl(), rule);
     }
 }

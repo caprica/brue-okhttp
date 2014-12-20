@@ -21,7 +21,7 @@
 package uk.co.caprica.brue.okhttp.service.bridge;
 
 import uk.co.caprica.brue.core.domain.bridge.authorisation.Authorisation;
-import uk.co.caprica.brue.core.domain.bridge.result.AuthoriseResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.AuthorisationService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -39,7 +39,7 @@ public final class AuthorisationServiceImpl extends AbstractBridgeService implem
     }
 
     @Override
-    public AuthoriseResult authorise(Authorisation authorisation) {
+    public Results authorise(Authorisation authorisation) {
         return authoriseResource(authorisation);
     }
 }

@@ -25,9 +25,7 @@ import java.util.Map;
 import uk.co.caprica.brue.core.domain.bridge.Group;
 import uk.co.caprica.brue.core.domain.bridge.builder.GroupBuilder;
 import uk.co.caprica.brue.core.domain.bridge.builder.GroupStateBuilder;
-import uk.co.caprica.brue.core.domain.bridge.result.CreateResult;
-import uk.co.caprica.brue.core.domain.bridge.result.DeleteResult;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.GroupService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -70,22 +68,22 @@ public final class GroupServiceImpl extends AbstractBridgeService implements Gro
     }
 
     @Override
-    public CreateResult create(GroupBuilder group) {
+    public Results create(GroupBuilder group) {
         return createResource(resourceUrl(), group);
     }
 
     @Override
-    public DeleteResult delete(Integer groupId) {
+    public Results delete(Integer groupId) {
         return deleteResource(resourceUrl(groupId));
     }
 
     @Override
-    public UpdateResult attributes(Integer groupId, GroupBuilder group) {
+    public Results attributes(Integer groupId, GroupBuilder group) {
         return updateResource(resourceUrl(groupId), group);
     }
 
     @Override
-    public UpdateResult state(Integer groupId, GroupStateBuilder state) {
+    public Results state(Integer groupId, GroupStateBuilder state) {
         return updateResource(resourceUrl(groupId, ACTION_PATH), state);
     }
 }

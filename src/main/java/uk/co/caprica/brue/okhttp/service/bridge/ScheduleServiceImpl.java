@@ -24,8 +24,7 @@ import java.util.Map;
 
 import uk.co.caprica.brue.core.domain.bridge.Schedule;
 import uk.co.caprica.brue.core.domain.bridge.builder.ScheduleBuilder;
-import uk.co.caprica.brue.core.domain.bridge.result.CreateResult;
-import uk.co.caprica.brue.core.domain.bridge.result.UpdateResult;
+import uk.co.caprica.brue.core.domain.bridge.result.Results;
 import uk.co.caprica.brue.core.service.bridge.ScheduleService;
 import uk.co.caprica.brue.core.settings.bridge.BridgeSettings;
 
@@ -63,7 +62,7 @@ public final class ScheduleServiceImpl extends AbstractBridgeService implements 
     }
 
     @Override
-    public CreateResult create(ScheduleBuilder schedule) {
+    public Results create(ScheduleBuilder schedule) {
         return createResource(resourceUrl(), schedule);
     }
 
@@ -73,7 +72,7 @@ public final class ScheduleServiceImpl extends AbstractBridgeService implements 
     }
 
     @Override
-    public UpdateResult attributes(Integer scheduleId, ScheduleBuilder schedule) {
+    public Results attributes(Integer scheduleId, ScheduleBuilder schedule) {
         return updateResource(resourceUrl(scheduleId), schedule);
     }
 }
